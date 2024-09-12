@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:shopapp/core/functions/sign_out_functions.dart';
-import 'package:shopapp/features/auth/presentation/views/login_view.dart';
 import 'package:shopapp/features/auth/presentation/views/widgets/custom_button.dart';
 import 'package:shopapp/features/auth/presentation/views/widgets/custom_text_form_field.dart';
 import 'package:shopapp/features/settings/presentation/controllers/cubit/get_profile_cubit.dart';
@@ -55,7 +54,6 @@ class UIProfileSuccess extends StatelessWidget {
                           name: nameController.text,
                           email: emailController.text,
                           phone: phoneController.text);
-                          
                     })),
             const SizedBox(height: 20),
             SizedBox(
@@ -64,11 +62,8 @@ class UIProfileSuccess extends StatelessWidget {
                 child: CustomButton(
                     text: 'Logout',
                     onPressed: () {
-                      signOutFunctions(context);
-                      Navigator.push(context,
-                          MaterialPageRoute(builder: (context) {
-                        return const LoginView();
-                      }));
+                      GetProfileCubit.get(context).logout();
+
                     })),
           ],
         ),

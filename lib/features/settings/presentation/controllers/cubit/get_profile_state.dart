@@ -18,18 +18,27 @@ final class GetProfileFailure extends GetProfileState {
 
   GetProfileFailure(this.errMessage);
 }
+
 final class UpdateProfileLoading extends GetProfileState {}
 
 final class UpdateProfileSuccess extends GetProfileState {
   final GetProfileModel updateProfileModel;
 
   UpdateProfileSuccess({required this.updateProfileModel});
-
-
 }
 
 final class UpdateProfileFailure extends GetProfileState {
   final String errMessage;
 
   UpdateProfileFailure(this.errMessage);
+}
+
+final class LogoutLoading extends GetProfileState {}
+
+final class LogoutSuccess extends GetProfileState {}
+
+final class LogoutFailure extends GetProfileState {
+  final String errMessage;
+
+  LogoutFailure(this.errMessage);
 }

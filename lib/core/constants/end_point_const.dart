@@ -7,4 +7,6 @@ const categoriesEndPoint = "categories";
 const favoritesEndPoint = "favorites";
 const updateProfileEndPoint = "update-profile";
 const profileEndPoint = "profile";
+const logoutEndPoint = "logout";
+const searchEndPoint = "products/search";
 late final String getToken;

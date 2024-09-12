@@ -33,32 +33,44 @@ class GetProfileCubit extends Cubit<GetProfileState> {
       emit(GetProfileFailure(e.toString()));
     }
   }
+
   void updateProfile({
     required String name,
     required String email,
     required String phone,
-  })async{
-     emit(UpdateProfileLoading());
+  }) async {
+    emit(UpdateProfileLoading());
     try {
-    var response =await  ApiServices.putData(
+      var response = await ApiServices.putData(
           url: updateProfileEndPoint,
           token: getToken,
-          data: {
-            "name": name,
-            "email": email,
-            "phone": phone
-          });
-          GetProfileModel updateProfileModel =  GetProfileModel.fromJson(response.data);
-        if (!updateProfileModel.status!) {
-          throw Exception(updateProfileModel.message!);
-        }
-        emit(UpdateProfileSuccess(updateProfileModel: updateProfileModel));
+          data: {"name": name, "email": email, "phone": phone});
+      GetProfileModel updateProfileModel =
+          GetProfileModel.fromJson(response.data);
+      if (!updateProfileModel.status!) {
+        throw Exception(updateProfileModel.message!);
+      }
+      emit(UpdateProfileSuccess(updateProfileModel: updateProfileModel));
     } on Exception catch (e) {
       emit(UpdateProfileFailure(e.toString()));
     } catch (e) {
       emit(UpdateProfileFailure(e.toString()));
     }
   }
+
+  void logout() async {
+    emit(LogoutLoading());
+    try {
+      var response = await ApiServices.postData(
+          url: logoutEndPoint, data: {
+            "fcm_token": "SomeFcmToken"
+          }, token: getToken);
+      emit(LogoutSuccess());
+    } catch (e) {
+      emit(LogoutFailure(e.toString()));
+    }
+  }
+
   @override
   void onChange(Change<GetProfileState> change) {
     log(change.currentState.toString());

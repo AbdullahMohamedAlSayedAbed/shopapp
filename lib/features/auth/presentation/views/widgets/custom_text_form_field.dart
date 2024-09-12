@@ -10,7 +10,7 @@ class CustomTextFormField extends StatelessWidget {
     this.validator,
     this.onSaved,
     this.keyboardType,
-    this.obscureText = false,
+    this.obscureText = false, this.onChanged, this.onFieldSubmitted,
   });
   final TextEditingController? controller;
 
@@ -21,17 +21,22 @@ class CustomTextFormField extends StatelessWidget {
   final void Function(String?)? onSaved;
   final TextInputType? keyboardType;
   final bool obscureText;
+  final void Function(String)? onChanged;
+  final void Function(String)? onFieldSubmitted;
   @override
   Widget build(BuildContext context) {
     return TextFormField(
       style: const TextStyle(color: Colors.deepOrange),
       controller: controller,
+      onChanged: onChanged ,
+      onFieldSubmitted: onFieldSubmitted,
       validator: (value) {
         if (value == null || value.isEmpty) {
           return 'This field is required';
         }
         return null;
       },
+      
       onSaved: onSaved,
       obscureText: obscureText,
       keyboardType: keyboardType,

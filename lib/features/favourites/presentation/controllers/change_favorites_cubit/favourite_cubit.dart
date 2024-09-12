@@ -8,8 +8,6 @@ import 'package:shopapp/core/services/api_services.dart';
 import 'package:shopapp/features/favourites/data/models/change_favorites_model/change_favorites_model.dart';
 import 'package:shopapp/main.dart';
 
-import '../get_favorites_cubit/get_favourites_cubit.dart';
-
 part 'favourite_state.dart';
 
 class FavoritesCubit extends Cubit<FavoritesState> {
