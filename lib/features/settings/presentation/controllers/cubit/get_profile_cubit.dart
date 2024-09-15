@@ -61,7 +61,7 @@ class GetProfileCubit extends Cubit<GetProfileState> {
   void logout() async {
     emit(LogoutLoading());
     try {
-      var response = await ApiServices.postData(
+       await ApiServices.postData(
           url: logoutEndPoint, data: {
             "fcm_token": "SomeFcmToken"
           }, token: getToken);

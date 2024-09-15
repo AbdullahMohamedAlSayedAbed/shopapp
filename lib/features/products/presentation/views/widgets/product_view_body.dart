@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:shopapp/core/widgets/custom_fading_widget.dart';
 import 'package:shopapp/features/products/presentation/controllers/cubit/product_cubit.dart';
+import 'package:shopapp/features/products/presentation/views/widgets/custom_loading_product_view.dart';
+import 'package:shopapp/features/products/presentation/views/widgets/loading_list_view_horizontal.dart';
 import 'package:shopapp/features/products/presentation/views/widgets/product_modal_progress_h_u_d.dart';
 
 class ProductViewBody extends StatelessWidget {
@@ -18,7 +21,7 @@ class ProductViewBody extends StatelessWidget {
         if (state is ProductFailure) {
           return Center(child: Text(state.errMessage));
         }
-        return const Center(child: CircularProgressIndicator());
+        return const CustomLoadingProductView();
       },
     );
   }

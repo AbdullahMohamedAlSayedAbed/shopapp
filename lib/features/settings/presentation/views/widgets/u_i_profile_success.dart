@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:shopapp/core/functions/sign_out_functions.dart';
 import 'package:shopapp/features/auth/presentation/views/widgets/custom_button.dart';
 import 'package:shopapp/features/auth/presentation/views/widgets/custom_text_form_field.dart';
 import 'package:shopapp/features/settings/presentation/controllers/cubit/get_profile_cubit.dart';

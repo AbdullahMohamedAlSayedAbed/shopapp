@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:shopapp/features/Home/data/models/home_model/product.dart';
 
@@ -9,9 +10,9 @@ class CustomStackImageProduct extends StatelessWidget {
     return Stack(
       alignment: AlignmentDirectional.bottomStart,
       children: [
-        Image.network(
-          product?.image.toString() ??
-              'https://student.valuxapps.com/storage/uploads/banners/1689106848R4Nxl.photo_2023-07-11_23-08-19.png',
+        CachedNetworkImage(
+          imageUrl: product?.image.toString() ?? "",
+          errorWidget: (context, url, error) => const Icon(Icons.error),
           width: double.infinity,
           height: 200,
         ),

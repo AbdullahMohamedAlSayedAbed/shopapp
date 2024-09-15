@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:shopapp/core/widgets/custom_fading_widget.dart';
 import 'package:shopapp/features/categories/presentation/controllers/categories_cubit/categories_cubit.dart';
 import 'package:shopapp/features/products/presentation/views/widgets/custom_stack_categories.dart';
+import 'package:shopapp/features/products/presentation/views/widgets/loading_list_view_horizontal.dart';
 
 class CustomCategoriesHomeListViewSeparated extends StatelessWidget {
   const CustomCategoriesHomeListViewSeparated({
@@ -29,8 +31,8 @@ class CustomCategoriesHomeListViewSeparated extends StatelessWidget {
         } else if (state is CategoriesFailure) {
           return Center(child: Text(state.message));
         }
-        return const Center(
-          child: CircularProgressIndicator(),
+        return const CustomFadingWidget(
+          child: LoadingListViewHorizontal(),
         );
       },
     );
